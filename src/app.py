@@ -39,7 +39,7 @@ query = '#100daysofcode (pandas OR python) -is:retweet'
 # traigo 10 tweets más recientes
 tweets = client.search_recent_tweets(query=query, 
                                     tweet_fields=['author_id','created_at','lang'],
-                                     max_results=10)
+                                     max_results=100)
 
 # creo diccionario
 tweets_dict = tweets.json()

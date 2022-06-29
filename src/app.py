@@ -19,9 +19,9 @@ access_token = os.environ.get('ACCESS_TOKEN')
 access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
 bearer_token = os.environ.get('BEARER_TOKEN')
 
-print(consumer_key)
-print(consumer_secret)
-print(bearer_token)
+print(f'{consumer_key},{consumer_secret},{access_token},{access_token_secret},{bearer_token}' )
+
+
 
 # Creando cliente de Twitter
 client = tweepy.Client( bearer_token=bearer_token, 
@@ -44,12 +44,12 @@ tweets = client.search_recent_tweets(query=query,
 # creo diccionario
 tweets_dict = tweets.json()
 
-# axtraigo "data" del diccionario
+# extraigo "data" del diccionario
 tweets_data = tweets_dict['data'] 
 
 # creo data frame usando pandas
 df = pd.json_normalize(tweets_data)
-df.head()
+print(df.head())
 
 # guardo data frame en csv
 df.to_csv("coding-tweets.csv")
